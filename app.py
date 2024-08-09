@@ -181,7 +181,7 @@ def create_html_report(uploaded_file, output_dir):
 
 
 def main():
-    st.title("Region TOC Generator")
+    st.title("Country TOC Generator")
 
     st.sidebar.header("Upload Excel File")
     uploaded_file = st.sidebar.file_uploader("Choose a file", type="xls")
