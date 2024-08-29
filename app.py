@@ -4,6 +4,8 @@ import os
 from io import StringIO
 import pandas as pd
 
+PASSWORD = "imr solution"
+
 def part1(keyword):
     ch1 = ("<strong>Chapter 1: Introduction</strong>\n\t1.1 Research Objectives\n\t1.2 Research Methodology\n\t1.3 Research Process"
           +"\n\t1.4 Scope and Coverage\n\t\t1.4.1 Market Definition\n\t\t1.4.2 Key Questions Answered\n\t1.5 Market Segmentation"
@@ -184,7 +186,7 @@ def main():
     st.title("Country TOC Generator")
 
     st.sidebar.header("Upload Excel File")
-    uploaded_file = st.sidebar.file_uploader("Choose a file", type="xls")
+    uploaded_file = st.sidebar.file_uploader("Choose a file", type="xls", key="file_uploader_1")
     
     if uploaded_file is not None:
         # Load the Excel file
@@ -243,5 +245,12 @@ def main():
             file_name='figures.txt',
             mime='text/plain'
         )
+
 if __name__ == "__main__":
-    main()
+    password = st.sidebar.text_input("Password", type="password")
+
+    # Check password
+    if password == PASSWORD:
+        main()  # If password is correct, run the app
+    else:
+        st.error("Incorrect password. Please try again.")
