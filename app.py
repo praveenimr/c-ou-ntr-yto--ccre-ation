@@ -6,6 +6,7 @@ import pandas as pd
  
 PASSWORD = "imr solution"
 
+
 def part1(keyword):
     ch1 = ("<strong>Chapter 1: Introduction</strong>\n\t1.1 Research Objectives\n\t1.2 Research Methodology\n\t1.3 Research Process"
           +"\n\t1.4 Scope and Coverage\n\t\t1.4.1 Market Definition\n\t\t1.4.2 Key Questions Answered\n\t1.5 Market Segmentation"
