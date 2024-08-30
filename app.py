@@ -5,7 +5,7 @@ from io import StringIO
 import pandas as pd
 import progressbar
 
- 
+
 PASSWORD = "Swati@IMR8180"
 
 def part1(keyword):
@@ -232,55 +232,6 @@ def process_excel_file(uploaded_file, id_keyword, id_segmentation, id_player, id
 if __name__ == "__main__":
     pass
 
-   
-    loc = "Metadata (4).xls"
-    regions = " "
-    wb = xlrd.open_workbook(loc)
-    sheet = wb.sheet_by_index(0)
-    id_segmentation = 12
-    id_player = 8
-    id_keyword = 1
-    id_region = 5
-    
-    
-    bar = progressbar.ProgressBar(maxval=sheet.nrows, \
-        widgets=[progressbar.Bar('=', '[', ']'), ' ', progressbar.Percentage()])
-    bar.start()
-    
-    
-    ans_toc = ""
-    ans_fig = ""
-    for j in range(1,sheet.nrows):
-        p1 = part1(sheet.cell_value(j,id_keyword).strip())
-        p1b = part1B(sheet.cell_value(j,id_keyword).strip())
-        p2 = part2(sheet.cell_value(j,id_keyword).strip(),sheet.cell_value(j,id_segmentation))
-#         p3a = part3A(sheet.cell_value(j,id_keyword).strip(),p2[1])
-        p3 = part3(sheet.cell_value(j,id_keyword).strip(),sheet.cell_value(j,id_player),p2[2])
-        #p4 = part4(sheet.cell_value(j,id_keyword).strip(),sheet.cell_value(j,id_region),p3[1]+1,sheet.cell_value(j,id_segmentation))
-        #p5 = part5(sheet.cell_value(j,id_keyword).strip(),sheet.cell_value(j,id_region),p4[1]+1,sheet.cell_value(j,id_segmentation))
-        p4 = part4(sheet.cell_value(j,id_keyword).strip(),p3[1])
-        
-        ans_fig = ans_fig + '"' + table(sheet.cell_value(j,id_keyword).strip(),sheet.cell_value(j,id_segmentation),regions,sheet.cell_value(j,id_player)) + "<br /><br />"
-        
-        ans_fig = ans_fig +  figures(sheet.cell_value(j,id_keyword).strip(),sheet.cell_value(j,id_segmentation),regions,sheet.cell_value(j,id_player)) + '"\n'
-        
-        ans_toc = ans_toc + '"' + str(p1) + str(p1b) + str(p2[0]) + str(p3[0]) + str(p4) +'"\n'
-        
-        bar.update(j+1)
-    
-    
-    bar.finish()
-    file_toc = open('toc.txt','w',encoding='utf-8')
-    file_toc.write(ans_toc)
-    #file_toc.write(ans_toc)
-    file_toc.close()
-    
-    file_figures = open('figures.txt','w',encoding='utf-8')
-    file_figures.write(ans_fig)
-    #file_figures.write(html2text.html2text(ans_fig).replace(" **","").replace("**",""))
-    file_figures.close()
-   
-    
 def main():
     st.title("Country TOC Generator")
 
