@@ -5,8 +5,20 @@ from io import StringIO
 import pandas as pd
 import progressbar
 
-
-PASSWORD = "Swati@IMR8180"
+st.markdown(
+     """
+    <style>
+    header[data-testid="stHeader"] {
+        display: none;
+    }
+    .css-1u7wa8r.e1tzin5v3 {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+PASSWORD = "Swati@imr8081"
 
 def part1(keyword):
     ch1 = ("<strong>\nChapter 1: Introduction</strong>\n\t1.1 Scope and Coverage"
